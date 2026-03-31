@@ -21,24 +21,12 @@
             font-size: clamp(30px, 8vw, 60px);
             margin: 50px;
             animation: 
-                blink 0.6s infinite,
                 pulseText 1s infinite alternate;
         }
         img{
-            width: 80vw;
-            max-width: 300px;
+            border: yellow double 10px;
+            max-width: 250px;
             margin: 10px;
-            animation: 
-                spin 3s linear infinite,
-                pulseImg 1s infinite alternate;
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
         }
         @keyframes pulseText {
             from {
@@ -50,20 +38,17 @@
                 color: yellow;
             }
         }
-        @keyframes pulseImg {
-            from {
-                transform: scale(1);
-            }
-            to {
-                transform: scale(1.3);
-            }
+        div{
+            display: flex;
+            flex: wrap;
         }
-
     </style>
 </head>
-
 <body>
-    <h1>HUJ CI W DUPE SZMATO</h1>
-    <img src="img.jpg" alt="HUJ">
+    <h1>GALERIA SZTUKI</h1>
+    <div>
+        <img src="zdj1.jpg" alt="HUJ">
+        <img src="zdj2.jpg" alt="HUJ">
+    </div>
 </body>
 </html>
