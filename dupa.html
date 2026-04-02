@@ -4,80 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEIL SLASH</title>
-    <style>
-        body{
-            margin: 0;
-            height: 100vh;
-            background-color: #FF00FF;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        h1{
-            font-weight: bold;
-            font-size: clamp(30px, 8vw, 60px);
-            margin: 50px;
-            animation: 
-                blink 0.6s infinite,
-                pulseText 1s infinite alternate;
-        }
-        div{
-            border: 5px solid yellow;
-            font-size: 60px;
-            padding: 30px;
-            margin: 50px;
-        }
-        @keyframes pulseText {
-            from {
-                transform: scale(1);
-                color: white;
-            }
-            to {
-                transform: scale(1.2);
-                color: yellow;
-            }
-        }
-        button{
-            font-size: 30px;
-            padding: 20px;
-            color: yellow;
-            font-family: 'Times New Roman';
-            font-weight: bold;
-            border: 7px solid yellow;
-            background-color: #9b009b;
-        }
-        button:hover{
-            cursor:pointer;
-            background-color: #9b009b7e;
-        }
-    </style>
+    <link rel="stylesheet" href="kupsko.css">
 </head>
-
 <body>
-    <h1>DO ŚRODY ZOSTAŁO: </h1>
-    <div id="countdown"></div>
-    <script>
-        const targetDate = new Date("2026-04-01T00:00:00+02:00").getTime();
-        const countdown = setInterval(()=>{
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            if(distance< 0){
-                clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "Czary mary okulary twoja stara to twoj stary";
-                return;
-            }
-            const days = Math.floor(distance / (1000*60*60*24));
-            const hours = Math.floor((distance / (1000*60*60))%24);
-            const minutes = Math.floor((distance / (1000*60))%60);
-            const seconds = Math.floor((distance / 1000)%60);
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-        }, 1000);
-    </script>
-    <a href="dupsko.html">
-        <button>Galeria sztuki</button>
-    </a>
+    <center>
+        <header id="countdown">
+            <script>
+                const targetDate = new Date("2026-03-29T18:40:00+02:00").getTime();
+                const countdown = setInterval(()=>{
+                    const now = new Date().getTime();
+                    const distance = now - targetDate;
+                    if(distance< 0){
+                        clearInterval(countdown);
+                        document.getElementById("countdown").innerHTML = "Czary mary okulary twoja stara to twoj stary";
+                        return;
+                    }
+                    const days = Math.floor(distance / (1000*60*60*24));
+                    const hours = Math.floor((distance / (1000*60*60))%24);
+                    const minutes = Math.floor((distance / (1000*60))%60);
+                    const seconds = Math.floor((distance / 1000)%60);
+                    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                }, 1000);
+            </script>
+        </header>
+    </center>
+    <h1>GALERIA SZTUKI</h1>
+    <div class="galeria">
+        <img src="zdj1.jpg" alt="HUJ">
+        <img src="zdj2.jpg" alt="HUJ">
+    </div>
 </body>
 </html>
