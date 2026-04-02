@@ -1,7 +1,10 @@
 body {
     height: 100vh;
     background-color: #FFCAE9;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  
     padding: 20px;
 }
 header{
