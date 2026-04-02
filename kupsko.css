@@ -1,0 +1,46 @@
+body {
+    height: 100vh;
+    background-color: #FFCAE9;
+    text-align: center;
+    padding: 20px;
+}
+header{
+    width: 80%;
+    border: 10px double #FF37A6;
+    font-size: 60px;                                                                                                            
+    background-color: #acff7f;;
+    padding: 30px;
+    margin: 50px;
+    text-align: center;
+}
+h1 {
+    font-weight: bold;
+    font-size: clamp(30px, 8vw, 60px);
+    margin: 50px;
+    animation:
+        blink 0.6s infinite,
+        pulseText 1s infinite alternate;
+}
+
+@keyframes pulseText {
+    from {
+        color: #FF37A6;
+    }
+
+    to {
+        color: #64b33a;
+    }
+}
+
+img {
+    border: #FF37A6 double 10px;
+    max-width: 250px;
+    margin: 20px;
+    padding: 3px
+}
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  
+}
