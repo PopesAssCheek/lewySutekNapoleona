@@ -1,8 +1,7 @@
 body {
     height: 100vh;
     background-color: #FFCAE9;
-    display: flex;
-    flex-wrap: wrap;
+    display: column;
     justify-content: center;
     align-items: center;  
     padding: 20px;
