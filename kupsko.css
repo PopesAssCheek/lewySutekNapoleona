@@ -18,12 +18,11 @@ header{
 h1 {
     font-weight: bold;
     font-size: clamp(30px, 8vw, 60px);
-    margin: 50px;
+    margin: 30px;
     animation:
         blink 0.6s infinite,
         pulseText 1s infinite alternate;
 }
-
 @keyframes pulseText {
     from {
         color: #FF37A6;
@@ -33,7 +32,11 @@ h1 {
         color: #64b33a;
     }
 }
-
+p{
+    font-weight: bold;
+    color: #64b33a;
+    font-size:80px;
+}
 img {
     border: #FF37A6 double 10px;
     max-width: 250px;
@@ -44,5 +47,37 @@ img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+.main{
+    display: flex;
+    flex:wrap;
+    width:85%;
+}
+#dol, #gora, .prawy{
+    border: #FF37A6 double 10px;
+    margin: 10px;
+}
+#gora{
+    height:30vh;
+    justify-content: center;
     align-items: center;  
+}
+#dol{
+    padding: 20px;
+}
+input{
+    border: solid 2px #FF37A6;
+    background-color: #fbe4f2;
+}
+button{
+    background-color: #acff7f;
+    border: solid 7px #FF37A6;
+    color: #FF37A6;
+    font-weight: 800;
+    font-size: 20px;
+    padding: 10px;
+    margin:10px;
+}
+button:hover{
+    background-color: #d8ffc4;
 }
