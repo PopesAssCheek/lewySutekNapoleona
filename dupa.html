@@ -1,41 +1,90 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEIL SLASH</title>
     <link rel="stylesheet" href="kupsko.css">
 </head>
+
 <body>
     <center>
         <header id="countdown">
             <script>
                 const targetDate = new Date("2026-03-29T18:40:00+02:00").getTime();
-                const countdown = setInterval(()=>{
+                const countdown = setInterval(() => {
                     const now = new Date().getTime();
                     const distance = now - targetDate;
-                    if(distance< 0){
+                    if (distance < 0) {
                         clearInterval(countdown);
                         document.getElementById("countdown").innerHTML = "Czary mary okulary twoja stara to twoj stary";
                         return;
                     }
-                    const days = Math.floor(distance / (1000*60*60*24));
-                    const hours = Math.floor((distance / (1000*60*60))%24);
-                    const minutes = Math.floor((distance / (1000*60))%60);
-                    const seconds = Math.floor((distance / 1000)%60);
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+                    const seconds = Math.floor((distance / 1000) % 60);
                     document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
                 }, 1000);
             </script>
         </header>
-        <h1>GALERIA SZTUKI</h1>
-        <div class="galeria">
-            <img src="zdj1.jpg" alt="HUJ">
-            <img src="zdj2.jpg" alt="HUJ">
-            <img src="zdj3.jpg" alt="HUJ">
-            <img src="zdj4.jpg" alt="HUJ">
-            <img src="zdj5.jpg" alt="HUJ">
-            <img src="zdj6.jpg" alt="HUJ">
+        <div class="main">
+            <div class="lewy">
+                <div id="gora">
+                    <h1>Licznik spotkań</h1>
+                    <p id="licznik">5</p>
+                </div>
+                <div id="dol">
+                    <input type="password" id="pass">
+                    <script>
+                        let licznik = localStorage.getItem("licznik");
+                        if (licznik === null) {
+                            licznik = 5;
+                        } else {
+                            licznik = parseInt(licznik);
+                        }
+                        document.getElementById("licznik").innerText = licznik;
+                        const passInput = document.getElementById("pass");
+                        const dol = document.getElementById("dol");
+                        passInput.addEventListener("input", () => {
+                            if (passInput.value === "Findusek") {
+                                dol.innerHTML = `
+                                <button onclick="dodaj()">Dodaj</button>
+                                <button onclick="usun()">Usuń</button>
+                            `;
+                            }
+                        });
+                        function dodaj() {
+                            licznik++;
+                            zapisz();
+                        }
+                        function usun() {
+                            if (licznik > 0) {
+                                licznik--;
+                                zapisz();
+                            }
+                        }
+                        function zapisz() {
+                            document.getElementById("licznik").innerText = licznik;
+                            localStorage.setItem("licznik", licznik);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="prawy">
+                <h1>GALERIA SZTUKI</h1>
+                <div class="galeria">
+                    <img src="zdj1.jpg" alt="HUJ">
+                    <img src="zdj2.jpg" alt="HUJ">
+                    <img src="zdj3.jpg" alt="HUJ">
+                    <img src="zdj4.jpg" alt="HUJ">
+                    <img src="zdj5.jpg" alt="HUJ">
+                    <img src="zdj6.jpg" alt="HUJ">
+                </div>
+            </div>
         </div>
     </center>
 </body>
+
 </html>
