@@ -38,9 +38,9 @@
                 <div id="dol">
                     <input type="password" id="pass">
                     <script>
-                        let licznik = localStorage.getItem("licznik");
-                        licznik = parseInt(licznik);
-                        document.getElementById("licznik").innerText = licznik;
+                        //let licznik = localStorage.getItem("licznik");
+                        //licznik = parseInt(licznik);
+                        //document.getElementById("licznik").innerText = licznik;
                         const passInput = document.getElementById("pass");
                         const dol = document.getElementById("dol");
                         passInput.addEventListener("input", () => {
@@ -52,18 +52,19 @@
                             }
                         });
                         function dodaj() {
-                            licznik++;
+                            //licznik++;
                             zapisz();
                         }
                         function usun() {
-                            if (licznik > 0) {
-                                licznik--;
-                                zapisz();
-                            }
+                            // if (licznik > 0) {
+                            //     licznik--;
+                            // }
+                            zapisz();
                         }
                         function zapisz() {
-                            document.getElementById("licznik").innerText = licznik;
-                            localStorage.setItem("licznik", licznik);
+                            //document.getElementById("licznik").innerText = licznik;
+                            //localStorage.setItem("licznik", licznik);
+                            return;
                         }
                     </script>
                 </div>
