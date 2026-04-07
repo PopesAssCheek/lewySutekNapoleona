@@ -39,11 +39,7 @@
                     <input type="password" id="pass">
                     <script>
                         let licznik = localStorage.getItem("licznik");
-                        if (licznik === null) {
-                            licznik = 5;
-                        } else {
-                            licznik = parseInt(licznik);
-                        }
+                        licznik = parseInt(licznik);
                         document.getElementById("licznik").innerText = licznik;
                         const passInput = document.getElementById("pass");
                         const dol = document.getElementById("dol");
