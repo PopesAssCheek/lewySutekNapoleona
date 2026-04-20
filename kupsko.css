@@ -4,7 +4,7 @@ body {
     display: column;
     justify-content: center;
     align-items: center;  
-    padding: 20px;
+    padding: 10px;
 }
 header{
     width: 80%;
@@ -14,6 +14,7 @@ header{
     padding: 30px;
     margin: 50px;
     text-align: center;
+    border-radius: 30px;
 }
 
 h1 {
@@ -21,14 +22,14 @@ h1 {
     font-size: clamp(30px, 8vw, 60px);
     margin: 30px;
     animation:
-        blink 1s infinite,
-        pulseText 0.5s infinite alternate;
+    blink 1s infinite,
+    pulseText 0.5s infinite alternate;
 }
 @keyframes pulseText {
     from {
         color: #FF37A6;
     }
-
+    
     to {
         color: black;
     }
@@ -42,7 +43,8 @@ img {
     border: #FF37A6 double 10px;
     max-width: 250px;
     margin: 20px;
-    padding: 3px
+    padding: 3px;
+    border-radius: 30px;
 }
 .galeria {
     display: flex;
@@ -56,9 +58,11 @@ img {
     width:85%;
 }
 #dol, #gora, .prawy{
+    border-radius: 30px;
     border: #FF37A6 double 10px;
     margin: 10px;
     background-color: #acff7f;
+    filter: blur(10);
 }
 #gora{
     justify-content: center;
