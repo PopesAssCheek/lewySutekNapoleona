@@ -12,20 +12,35 @@
     <center>
         <header id="countdown">
             <script>
-                const targetDate = new Date("2026-03-21T16:00:00+02:00").getTime();
+                const targetDate = new Date("2026-03-21T16:00:00+02:00");
+
+                function getMonthDifference(start, end) {
+                    let months = (end.getFullYear() - start.getFullYear()) * 12;
+                    months += end.getMonth() - start.getMonth();
+                    if (end.getDate() < start.getDate()) {
+                        months--;
+                    }
+
+                    return months;
+                }
                 const countdown = setInterval(() => {
-                    const now = new Date().getTime();
+                    const now = new Date();
                     const distance = now - targetDate;
                     if (distance < 0) {
                         clearInterval(countdown);
                         document.getElementById("countdown").innerHTML = "Czary mary okulary twoja stara to twoj stary";
                         return;
                     }
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+                    const months = getMonthDifference(targetDate, now);
+
+                    const days = Math.floor((distance / (1000 * 60 * 60 * 24)) % 30);
                     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
                     const minutes = Math.floor((distance / (1000 * 60)) % 60);
                     const seconds = Math.floor((distance / 1000) % 60);
-                    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+                    document.getElementById("countdown").innerHTML =
+                        months + "m " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
                 }, 1000);
             </script>
         </header>
@@ -33,13 +48,13 @@
             <div class="lewy">
                 <div id="gora">
                     <h1>Licznik spotkań</h1>
-                    <p id="licznik">10</p>
+                    <p id="licznik">11</p>
                 </div>
                 <div id="dol">
                     <h1>Do następnego spotkania zostało: </h1>
                     <e id="licznik2"></e>
                     <script>
-                        const targetDate1 = new Date("2026-04-22T13:00:00+02:00").getTime();
+                        const targetDate1 = new Date("2026-05-01T15:00:00+02:00").getTime();
                         const countdown1 = setInterval(() => {
                             const now = new Date().getTime();
                             const distance = targetDate1 - now;
