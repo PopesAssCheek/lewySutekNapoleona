@@ -13,34 +13,39 @@
         <header id="countdown">
             <script>
                 const targetDate = new Date("2026-03-21T16:00:00+02:00");
-
                 function getMonthDifference(start, end) {
                     let months = (end.getFullYear() - start.getFullYear()) * 12;
                     months += end.getMonth() - start.getMonth();
-                    if (end.getDate() < start.getDate()) {
+                    const testDate = new Date(start);
+                    testDate.setMonth(testDate.getMonth() + months);
+                    if (testDate > end) {
                         months--;
                     }
-
                     return months;
                 }
                 const countdown = setInterval(() => {
                     const now = new Date();
-                    const distance = now - targetDate;
-                    if (distance < 0) {
+                    if (now < targetDate) {
                         clearInterval(countdown);
-                        document.getElementById("countdown").innerHTML = "Czary mary okulary twoja stara to twoj stary";
+                        document.getElementById("countdown").innerHTML =
+                            "Czary mary okulary twoja stara to twoj stary";
                         return;
                     }
-
                     const months = getMonthDifference(targetDate, now);
-
-                    const days = Math.floor((distance / (1000 * 60 * 60 * 24)) % 30);
-                    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-                    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-                    const seconds = Math.floor((distance / 1000) % 60);
-
+                    const afterMonths = new Date(targetDate);
+                    afterMonths.setMonth(afterMonths.getMonth() + months);
+                    const remaining = now - afterMonths;
+                    const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+                    const seconds = Math.floor((remaining / 1000) % 60);
                     document.getElementById("countdown").innerHTML =
-                        months + "m " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                        months + "m " +
+                        days + "d " +
+                        hours + "h " +
+                        minutes + "m " +
+                        seconds + "s";
+
                 }, 1000);
             </script>
         </header>
@@ -48,7 +53,7 @@
             <div class="lewy">
                 <div id="gora">
                     <h1>Licznik spotkań</h1>
-                    <p id="licznik">22</p>
+                    <p id="licznik">24</p>
                 </div>
                 <div id="dol">
                     <h1>Do następnego spotkania zostało: </h1>
