@@ -1,0 +1,211 @@
+====================================================
+  SPRAWDZIAN — PROGRAMOWANIE DESKTOPOWE (WPF / C#)
+  CZESŁAW 1
+  Czas: 35 minut
+====================================================
+
+--- OPIS ZADANIA ---
+
+Stwórz aplikację WPF, która:
+  1. Pozwala użytkownikowi wpisać dowolny napis (tekst).
+  2. Po kliknięciu przycisku znajduje dominującą literę w napisie,
+     tzn. literę która pojawia się najczęściej.
+  3. Jeśli kilka liter ma tę samą najwyższą liczbę wystąpień,
+     wypisuje wszystkie — tak jak dominanta w zbiorze liczb.
+
+  Przykład 1: "ala ma kota"
+    a: 4, l: 1, m: 1, k: 1, o: 1, t: 1
+    Dominanta: a (4 wystąpienia)
+
+  Przykład 2: "abbc"
+    a: 1, b: 2, c: 1
+    Dominanta: b (2 wystąpienia)
+
+  Przykład 3: "aabb"
+    a: 2, b: 2
+    Dominanta: a, b (po 2 wystąpienia)
+
+  Uwagi:
+    - spacje i znaki interpunkcyjne pomijamy, liczymy tylko litery
+    - wielkość liter ignorujemy (A = a)
+
+--- WYMAGANIA FUNKCJONALNE ---
+
+  Zaimplementuj metodę:
+    List<char> ZnajdzDominante(string tekst)
+
+  Metoda powinna:
+    - zliczyć wystąpienia każdej litery (ignorując wielkość liter)
+    - znaleźć maksymalną liczbę wystąpień
+    - zwrócić listę wszystkich liter które tę liczbę osiągają
+    - zwrócić pustą listę jeśli tekst jest pusty lub nie zawiera liter
+
+--- WYMAGANIA UI ---
+
+  Układ okna: wszystkie GroupBoxy umieść wewnątrz jednego nadrzędnego GroupBoxa
+  który obejmuje całą zawartość okna.
+
+  Podział na GroupBoxy:
+
+  GroupBox "Dane wejściowe":
+    - pole TextBox na wpisanie napisu (wieloliniowe, min. 3 linie)
+    - przycisk "Szukaj dominanty" z kolorowym tłem
+
+  GroupBox "Wynik":
+    - TextBlock lub Label wyświetlający dominującą literę/litery
+    - TextBlock wyświetlający liczbę wystąpień
+
+  GroupBox "Statystyki":
+    - TextBlock wyświetlający pełne zliczenie wszystkich liter
+      w formacie: a: 4, b: 2, c: 1 ...
+    - posortowane alfabetycznie
+
+  Kolory — zdefiniuj w App.xaml lub bezpośrednio:
+    Tło okna:       #1A1A2E
+    Tło GroupBoxów: #16213E
+    Przycisk:       #E94560
+    Tekst:          #EAEAEA
+
+  Stringi wpisuj przez właściwość Content/Text w XAML,
+  nie hardcoduj ich w code-behind.
+
+--- WALIDACJA ---
+
+  1. Puste pole tekstowe
+       → wyświetl w GroupBox "Wynik": "Wpisz tekst"
+
+  2. Tekst nie zawiera żadnej litery (same cyfry, znaki itp.)
+       → wyświetl: "Brak liter w tekście"
+
+--- WYMAGANIA TESTOWE ---
+
+  Napisz testy jednostkowe (MSTest lub xUnit) dla metody ZnajdzDominante:
+
+  PRZYPADKI POPRAWNE:
+    - "ala ma kota"  → wynik zawiera tylko 'a'
+    - "aabb"         → wynik zawiera 'a' i 'b' (obie dominanty)
+    - "AAABBC"       → wynik zawiera tylko 'a' (ignorowanie wielkości)
+
+  PRZYPADKI BRZEGOWE:
+    - "abc"          → wynik zawiera 'a', 'b', 'c' (wszystkie po 1)
+    - "   !!!   "    → wynik pusty (brak liter)
+    - "a"            → wynik zawiera tylko 'a'
+
+  PRZYPADKI NIEPOPRAWNE:
+    - ""             → wynik pusty (pusty string)
+    - null           → wynik pusty (zabezpiecz metodę przed null)
+
+--- POMOC: KOD STARTOWY ---
+
+// Szkielet testów (NUnit):
+
+using NUnit.Framework;
+using System.Collections.Generic;
+
+[TestFixture]
+public class DominantaTest
+{
+    // TODO: utwórz instancję klasy zawierającej metodę
+    // np. Algorytmy alg = new Algorytmy();
+
+    [Test]
+    public void Test_JednaDominanta()
+    {
+        // TODO:
+        // var wynik = alg.ZnajdzDominante("ala ma kota");
+        // Assert.That(wynik.Count, Is.EqualTo(1));
+        // Assert.That(wynik, Does.Contain('a'));
+    }
+
+    [Test]
+    public void Test_KilkaDominant()
+    {
+        // TODO:
+        // var wynik = alg.ZnajdzDominante("aabb");
+        // Assert.That(wynik.Count, Is.EqualTo(2));
+        // Assert.That(wynik, Does.Contain('a'));
+        // Assert.That(wynik, Does.Contain('b'));
+    }
+
+    [Test]
+    public void Test_PustyString()
+    {
+        // TODO:
+        // var wynik = alg.ZnajdzDominante("");
+        // Assert.That(wynik, Is.Empty);
+    }
+
+    [Test]
+    public void Test_Null()
+    {
+        // TODO:
+        // var wynik = alg.ZnajdzDominante(null);
+        // Assert.That(wynik, Is.Empty);
+    }
+
+    [Test]
+    public void Test_BrakLiter()
+    {
+        // TODO:
+        // var wynik = alg.ZnajdzDominante("123 !!!");
+        // Assert.That(wynik, Is.Empty);
+    }
+}
+
+--- CO BĘDZIE SZCZEGÓLNIE OCENIANE ---
+
+  - poprawność metody ZnajdzDominante() dla wszystkich przypadków
+  - obsługa wielu dominant jednocześnie
+  - kompletność i poprawność testów (wszystkie zielone)
+  - podział UI na GroupBoxy zgodnie z wymaganiami
+  - statystyki wszystkich liter posortowane alfabetycznie
+  - kolory i estetyka okna
+  - git: 2 commity z opisowymi wiadomościami
+
+--- ODDAWANIE PROJEKTU ---
+
+  Oddaj katalog z plikami źródłowymi projektu (bez folderu bin/ i obj/).
+  Screenshoty:
+    a) działająca aplikacja z przykładowym wynikiem
+    b) wyniki testów (wszystkie zielone)
+    c) git log --oneline (po wykonaniu wszystkich kroków poniżej)
+
+  Git — wykonaj kolejno:
+
+    1. Zainicjuj repozytorium:
+         git init
+
+    2. Dodaj pliki i zrób pierwszy commit (gotowy UI + metoda):
+         git add .
+         git commit -m "opisowa wiadomosc np. dodano UI i metode ZnajdzDominante"
+
+    3. Utwórz branch do testów:
+         git branch testy
+         git checkout testy
+
+    4. Napisz testy, dodaj je i zrób commit na branchu:
+         git add .
+         git commit -m "opisowa wiadomosc np. dodano testy NUnit dla ZnajdzDominante"
+
+    5. Wróć na główną gałąź i zmerguj:
+         git checkout master
+         git merge --no-ff testy
+
+       Flaga --no-ff wymusza stworzenie osobnego commita merge.
+       Bez niej git "przesunąłby" mastera do przodu po cichu
+       i w logu nie byłoby śladu po branchu. Z --no-ff w logu
+       zobaczysz 3 wpisy: commit przed branchem, commit z testami w branchu, commit merge.
+
+    6. Zrób screena z:
+         git log --oneline
+
+====================================================
+  KRYTERIA OCENIANIA — TYLKO DLA NAUCZYCIELA
+====================================================
+
+  Niedostateczna (1)   0    – 74,99%
+  Dopuszczająca  (2)   75   – 81,99%
+  Dostateczna    (3)   82   – 88,99%
+  Dobra          (4)   89   – 95,99%
+  Bardzo dobra   (5)   96   – 99,99%
+  Celująca       (6)   100%
