@@ -92,7 +92,7 @@ e{
     color: black;
 }
 
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -125,7 +125,7 @@ body {
 header {
     max-width: 95%;
     overflow-wrap: anywhere;
-}
+} */
 @media (max-width: 900px) {
     .main {
         flex-direction: column;
@@ -150,7 +150,6 @@ header {
     }
 }
 
-/* TELEFONY */
 @media (max-width: 600px) {
     body {
         padding: 5px;
